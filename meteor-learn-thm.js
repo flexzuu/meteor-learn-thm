@@ -11,6 +11,10 @@ Meteor.methods({
   }
 });
 
+Router.route('/', function () {
+  this.render('home');
+});
+
 if(Meteor.isServer){
   Meteor.publish("links", function(argument){
     return Links.find();
