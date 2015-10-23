@@ -1,6 +1,24 @@
 Links = new Mongo.Collection("links");
 
+Meteor.methods({
+  addLink:function(link, description){
+    // Insert a links into the collection
+    Links.insert({
+      description: description,
+      link: link,
+      createdAt: new Date()
+    });
+  }
+});
+
+if(Meteor.isServer){
+  Meteor.publish("links", function(argument){
+    return Links.find();
+  });
+}
+
 if (Meteor.isClient) {
+  Meteor.subscribe("links");
 
   Template.main.helpers({
     links: function () {
@@ -16,12 +34,8 @@ if (Meteor.isClient) {
       var description = event.target.description.value;
       var link        = event.target.link.value;
 
-      // Insert a links into the collection
-      Links.insert({
-        description: description,
-        link: link,
-        createdAt: new Date()
-      });
+      //Add Link via Meteor method
+      Meteor.call("addLink", link, description);
 
       // Clear form
       event.target.description.value = "";
