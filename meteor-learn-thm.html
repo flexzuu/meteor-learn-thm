@@ -3,24 +3,49 @@
 </head>
 
 <body>
-  <h1>Links for learning Meteor</h1>
-  {{> main}}
+  <div class="container">
+    {{> title}}
+    {{> main}}
+  </div>
+  {{> footer}}
 </body>
 
-<template name="main">
-  <form class="new-link">
-    <input type="text" name="link" placeholder="Put link here." />
-    <input type="text" name="description" placeholder="Put description here." />
-    <button type="submit">Add</button>
-  </form>
+<template name="title">
+  <div class="page-header">
+    <h1>Links for learning Meteor</h1>
+  </div>
+</template>
 
-  <ul>
-    {{#each links}}
-       {{> info}}
-     {{/each}}
-  </ul>
+<template name="main">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <form class="new-link form-inline">
+          <input class="form-control" type="text" name="link" placeholder="Put link here." />
+          <input class="form-control" type="text" name="description" placeholder="Put description here." />
+          <button class="btn btn-default pull-right" type="submit">Add</button>
+      </form>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+        {{#each links}}
+           {{> info}}
+         {{/each}}
+      </ul>
+    </div>
+  </div>
 </template>
 
 <template name="info">
-  <li><a href="{{link}}" target="_blank">{{description}}</a></li>
+  <li  class="list-group-item">
+    <span class="badge">{{whenFromNow createdAt}}</span>
+    <a href="{{link}}" target="_blank">{{description}}</a>
+  </li>
+</template>
+
+<template name="footer">
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted" >Build with Meteor & Twitter Bootstrap.</p>
+    </div>
+  </footer>
 </template>
