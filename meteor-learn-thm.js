@@ -4,10 +4,9 @@ if (Meteor.isClient) {
 
   Template.main.helpers({
     links: function () {
-      return Links.find({});
+      return Links.find({}, {sort: {createdAt: -1}});
     }
   });
-
   Template.main.events({
     'submit .new-link': function (event) {
       // Prevent default browser form submit
@@ -28,11 +27,5 @@ if (Meteor.isClient) {
       event.target.description.value = "";
       event.target.link.value = "";
     }
-  });
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
   });
 }
