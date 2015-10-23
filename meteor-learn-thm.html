@@ -26,20 +26,19 @@
       </form>
     </div>
     <div class="panel-body">
-      <ul class="list-group">
+      <div class="list-group">
         {{#each links}}
            {{> info}}
          {{/each}}
-      </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <template name="info">
-  <li  class="list-group-item">
-    <span class="badge">{{whenFromNow createdAt}}</span>
-    <a href="{{link}}" target="_blank">{{description}}</a>
-  </li>
+
+    <a href="{{link}}" target="_blank" class="list-group-item">{{description}}<span class="badge">{{whenFromNow createdAt}}</span></a>
+
 </template>
 
 <template name="footer">
