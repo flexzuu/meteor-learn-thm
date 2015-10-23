@@ -32,6 +32,13 @@ body {
   margin: 20px 0;
 }
 
-.footer > a {
+.footer a {
   float: right;
+  color: grey;
+}
+
+.footer a:hover {
+
+  color: black;
+  text-decoration: none;
 }
