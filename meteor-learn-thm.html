@@ -1,0 +1,26 @@
+<head>
+  <title>Links for learning Meteor</title>
+</head>
+
+<body>
+  <h1>Links for learning Meteor</h1>
+  {{> main}}
+</body>
+
+<template name="main">
+  <form class="new-link">
+    <input type="text" name="link" placeholder="Put link here." />
+    <input type="text" name="description" placeholder="Put description here." />
+    <button type="submit">Add</button>
+  </form>
+
+  <ul>
+    {{#each links}}
+       {{> info}}
+     {{/each}}
+  </ul>
+</template>
+
+<template name="info">
+  <li><a href="{{link}}" target="_blank">{{description}}</a></li>
+</template>
