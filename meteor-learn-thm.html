@@ -22,24 +22,29 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <form class="new-link form-inline">
-          <input class="form-control" type="text" name="link" placeholder="Put link here." />
-          <input class="form-control" type="text" name="description" placeholder="Put description here." />
+          <input autofocus required class="form-control" type="text" name="link" placeholder="Put link here." />
+          <input required class="form-control" type="text" name="description" placeholder="Put description here." />
+          <select class="form-control" name="type">
+            <option>Select type.</option>
+            <option>Book</option>
+            <option>Video</option>
+            <option>Blog/Post</option>
+            <option>Documentation</option>
+          </select>
           <button class="btn btn-default pull-right" type="submit">Add</button>
       </form>
     </div>
-    <div class="panel-body">
-      <div class="list-group">
-        {{#each links}}
-           {{> info}}
-         {{/each}}
-      </div>
+    <div class="list-group">
+      {{#each links}}
+         {{> info}}
+       {{/each}}
     </div>
   </div>
 </template>
 
 <template name="info">
 
-    <a href="{{link}}" target="_blank" class="list-group-item">{{description}}<span class="badge">{{whenFromNow createdAt}}</span></a>
+    <a href="{{link}}" target="_blank" class="list-group-item">{{description}}<span class="label label-primary pull-right">{{whenFromNow createdAt}}</span> <span class="label label-info pull-right">{{type}}</span></a>
 
 </template>
 
