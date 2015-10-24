@@ -20,6 +20,12 @@ if(Meteor.isServer){
   Meteor.publish("links", function(argument){
     return Links.find();
   });
+  Houston.methods("links", {
+  "Reset Type": function (link) {
+    Links.update(link._id, {$set: {type: "Select type."}});
+    return "add type success";
+  }
+});
 }
 
 if (Meteor.isClient) {
