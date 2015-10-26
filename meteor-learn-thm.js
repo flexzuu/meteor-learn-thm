@@ -2,6 +2,13 @@ Links = new Mongo.Collection("links");
 
 Meteor.methods({
   addLink:function(link, description, type){
+    // Check for valid input
+    //TODO: check for valid url.
+    if(link === "" || description === ""){
+      console.log("Invalid entry.");
+      return;
+    }
+
     // Insert a links into the collection
     Links.insert({
       description: description,
